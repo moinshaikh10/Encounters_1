@@ -1,0 +1,67 @@
+<div class="main-dashboard-wrapper">
+    <div class="dashboard-header-container">
+        <div class="main-title">Encounters</div>
+        <div class="search">
+            <input type="text" class="search-input" placeholder="Search Patient">
+        </div>
+        <div></div>
+    </div>
+
+    <div class="patient-details-main-wrapper">
+        <div class="details-cont">
+            
+            <!-- <div class="left-cont"></div>
+            <div class="right-cont"></div> -->
+
+            <div class="details-cont">
+                <div class="section-container" *ngFor="let section of sections; let i= index">
+                    <div class=photo-cont>
+                    <div class="patient-photo" *ngIf="i===0"></div>
+                    <div class="section-box-parent">
+                  <div class="section-box" *ngFor="let detail of section; let index=index">
+                    <div class="label-name">{{ detail.label }}:</div>
+                    <div class="value">{{ detail.value }}</div>
+                  </div>
+                  </div>
+                    </div>
+                </div>
+                <div class="section-container">
+                    <div class="label-name">Patient Flags</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Medical (0)</th>
+                                <th>Behavioural Health (0)</th>
+                                <th>Physical (0)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Misc (0)</td>
+                                <td colspan="2">This patient currently has no flags</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+              
+        </div>
+    </div>
+
+    <div class="left-right-main-wrapper">
+        <!-- Left Panel -->
+  <div class="left-panel">
+    <div class="left-panel-cont">
+      <div class="left-panel-option" *ngFor="let option of options" 
+          [class.active]="selectedOption === option.id"
+          (click)="selectedOption = option.id">
+        {{ option.name }}
+    </div>
+    </div>
+  </div>
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <ng-container *ngIf="selectedComponent" [ngComponentOutlet]="selectedComponent"></ng-container>
+  </div>
+    </div>
+</div>
