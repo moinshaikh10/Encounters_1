@@ -10,10 +10,11 @@ import { OrderListComponent } from '../order-list/order-list.component';
 import { DocumentationListComponent } from '../documentation-list/documentation-list.component';
 import { BillingCodeComponent } from '../billing-code/billing-code.component';
 import { AppointmentsComponent } from '../appointments/appointments.component';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-main-dashboard',
-  imports: [CommonModule],
+  imports: [CommonModule,NgbDropdownModule],
   templateUrl: './main-dashboard.component.html',
   styleUrl: './main-dashboard.component.scss'
 })
@@ -89,4 +90,15 @@ export class MainDashboardComponent {
   get selectedComponent() {
     return this.componentMap[this.selectedOption];
   }
+
+  selectedService: any = null;  // Default empty
+serviceOptions = [
+  { id: 1, name: "Vital Signs" },
+  { id: 2, name: "Problems" },
+  { id: 3, name: "Allergies" }
+];
+
+selectService(option: any) {
+  this.selectedService = option; // Update selected value
+}
 }
