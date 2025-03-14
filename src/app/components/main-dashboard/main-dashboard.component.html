@@ -47,24 +47,10 @@
               
         </div>
     </div>
+    <div class="columns-main-wrapper">
+<div class="left-main-column">
 
-    <!-- progress bar -->
-     <div class="encounter-progressbar-cont">
-        <div class="progressbar-header">
-            <div class="bar-title-button">
-            <div class="progressbar-title">Encounter Completes in 00:15:00</div>
-            <button type="button" class="btn btn-outline-primary pauseBtn">Pause</button>
-            </div>
-            <div>
-                <div class="percent-label">80%</div>
-            </div>
-
-        </div>
-        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-bar" style="width: 80%"></div>
-          </div>
-     </div>
-
+    <div class="dropdowns-wrapper"></div>
     <div class="left-right-main-wrapper">
         <!-- Left Panel -->
   <div class="left-panel">
@@ -80,5 +66,27 @@
   <div class="right-panel">
     <ng-container *ngIf="selectedComponent" [ngComponentOutlet]="selectedComponent"></ng-container>
   </div>
+    </div>
+</div>
+<div class="right-main-column">
+        <!-- progress bar -->
+        <div class="encounter-progressbar-cont">
+            <div class="progressbar-header">
+                <div class="bar-title-button">
+                <div class="progressbar-title">Encounter Completes in 00:15:00</div>
+                <button type="button" class="btn btn-outline-primary pauseBtn">Pause</button>
+                </div>
+                <div>
+                    <div class="percent-label">80%</div>
+                </div>
+    
+            </div>
+            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" style="width: 80%"></div>
+              </div>
+         </div>
+    
+    <app-medications></app-medications>
+</div>
     </div>
 </div>
