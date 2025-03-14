@@ -1,5 +1,6 @@
-.main-dashboard-wrapper {
-    padding: 0 20px;
+::ng-deep {
+    .main-dashboard-wrapper {
+    padding: 10px 20px;
     .dashboard-header-container {
         display: flex;
         justify-content: space-between;
@@ -104,6 +105,7 @@
         border-radius: 6px;
         box-shadow: 0px 0px 6px 0px #00000026;
         width: 600px;
+        margin-bottom: 20px;
 
         .progressbar-header {
             display: flex;
@@ -147,8 +149,10 @@
     
 
     .left-right-main-wrapper {
+        display: inline-flex;
         display: flex;
-        margin-top: 20px;
+        flex-grow: 1;
+        // margin-top: 20px;
 
         .left-panel {
             min-width: 210px;
@@ -179,6 +183,56 @@
             border-radius: 6px;
             flex-grow: 1;
             height: calc(100vh - 253px);
+            padding: 10px 20px;
+            // max-width: 1000px;
+            width: 1000px;
+            width: 100%;
+            height: 452px;
+
+            .right-panel-header {
+                justify-content: space-between;
+                margin-bottom: 10px;
+
+                .right-panel-title {
+                    font-weight: 600;
+                    font-size: 16px;
+                    letter-spacing: 0.5px;
+                    line-height: 21px;
+                    color: #333333;
+                }
+
+                .right-panel-add-btn {
+                    color: #0080A5;
+                    font-size: 16px;
+                    font-weight: 500;
+                    letter-spacing: 0.5px;
+                    line-height: 23px;
+                    cursor: pointer;
+                }
+            }
         }
     }
+    .columns-main-wrapper {
+        display: inline-flex;
+    // align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .left-main-column {
+        display: flex
+;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 20px;
+    }
+
+    .dropdowns-wrapper {
+        min-height: 140px;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #DDDDDD;
+    }
+    }
+}
 }
