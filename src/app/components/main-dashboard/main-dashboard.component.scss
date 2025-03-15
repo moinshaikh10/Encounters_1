@@ -249,6 +249,12 @@
                     letter-spacing: 0.5px;
                     line-height: 23px;
                     cursor: pointer;
+                    display: inline-flex;
+                    align-items: center;
+
+                    .bi-plus::before {
+                        font-weight: 600 !important;
+                    }
                 }
             }
         }
