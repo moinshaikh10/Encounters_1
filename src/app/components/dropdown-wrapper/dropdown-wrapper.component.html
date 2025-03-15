@@ -1,0 +1,21 @@
+<div class="dropdown-wrapper" [ngClass]="customClass ? customClass : ''">
+    <div class="dropdown-label-header flex align-items-center">
+        <div class="dropdown-label" [ngClass]="{'required': isRequired}">{{dropdownLabel}}</div>
+    </div>
+    <div ngbDropdown class="d-inline-block">
+        <!-- Button showing selected value -->
+        <div class="dropdown-toggler" id="dropdownBasic1" [ngClass]="{'dropdown-placeholder':!selectedValue}" ngbDropdownToggle>
+            {{ selectedValue?.name || 'Select an option' }}
+        </div>
+  
+        <!-- Dropdown Menu -->
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button *ngFor="let option of options" 
+                  class="dropdown-item" 
+                  [class.active]="option.id === selectedValue?.id" 
+                  (click)="selectOption(option)">
+            {{ option.name }}
+          </button>
+        </div>
+      </div>
+</div>
