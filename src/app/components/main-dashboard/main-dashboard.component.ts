@@ -12,10 +12,11 @@ import { BillingCodeComponent } from '../billing-code/billing-code.component';
 import { AppointmentsComponent } from '../appointments/appointments.component';
 import { MedicationsComponent } from '../medications/medications.component';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { DropdownWrapperComponent } from "../dropdown-wrapper/dropdown-wrapper.component";
 
 @Component({
   selector: 'app-main-dashboard',
-  imports: [CommonModule,NgbDropdownModule, MedicationsComponent],
+  imports: [CommonModule, NgbDropdownModule, MedicationsComponent, DropdownWrapperComponent],
   templateUrl: './main-dashboard.component.html',
   styleUrl: './main-dashboard.component.scss'
 })
@@ -102,4 +103,113 @@ serviceOptions = [
 selectService(option: any) {
   this.selectedService = option; // Update selected value
 }
+
+selectedValue:any = null; // Default selection
+
+  ddOptions = [
+    { id: 1, name: "Vital Signs" },
+    { id: 2, name: "Problems" },  // Pre-selected value
+    { id: 3, name: "Allergies" }
+  ];
+
+  selectdd(option: any) {
+    this.selectedValue = option; // Update selected value
+  }
+
+  selectedItem1: any = null; // First dropdown selected value
+  selectedItem2: any = null; // Second dropdown selected value
+  selectedItem3: any = null; // Second dropdown selected value
+  selectedItem4: any = null; // Second dropdown selected value
+  selectedItem5: any = null; // Second dropdown selected value
+  selectedItem6: any = null; // Second dropdown selected value
+  selectedItem7: any = null; // Second dropdown selected value
+  selectedItem8: any = null; // Second dropdown selected value
+
+  dropdownOptions1 = [
+    { id: 1, name: "Vital Signs" },
+    { id: 2, name: "Problems" },
+    { id: 3, name: "Allergies" }
+  ];
+
+  dropdownOptions2 = [
+    { id: 4, name: "Primary Care Screening" },
+    { id: 5, name: "Document Encounter" },
+    { id: 6, name: "Encounter" }
+  ];
+
+  dropdownOptions3 = [
+    { id: 4, name: "Primary Care Screening" },
+    { id: 5, name: "Document Encounter" },
+    { id: 6, name: "Encounter" }
+  ];
+
+  dropdownOptions4 = [
+    { id: 4, name: "Primary Care Screening" },
+    { id: 5, name: "Document Encounter" },
+    { id: 6, name: "Encounter" }
+  ];
+
+  dropdownOptions5 = [
+    { id: 4, name: "Primary Care Screening" },
+    { id: 5, name: "Document Encounter" },
+    { id: 6, name: "Encounter" }
+  ];
+
+  dropdownOptions6 = [
+    { id: 4, name: "Primary Care Screening" },
+    { id: 5, name: "Document Encounter" },
+    { id: 6, name: "Encounter" }
+  ];
+
+  dropdownOptions7 = [
+    { id: 4, name: "Primary Care Screening" },
+    { id: 5, name: "Document Encounter" },
+    { id: 6, name: "Encounter" }
+  ];
+
+  dropdownOptions8 = [
+    { id: 4, name: "Primary Care Screening" },
+    { id: 5, name: "Document Encounter" },
+    { id: 6, name: "Encounter" }
+  ];
+
+  handleSelectionChange1(selected: any) {
+    this.selectedItem1 = selected;
+    console.log("Dropdown 1 Selected:", selected);
+  }
+
+  handleSelectionChange2(selected: any) {
+    this.selectedItem2 = selected;
+    console.log("Dropdown 2 Selected:", selected);
+  }
+
+  handleSelectionChange3(selected: any) {
+    this.selectedItem3 = selected;
+    console.log("Dropdown 2 Selected:", selected);
+  }
+
+  handleSelectionChange4(selected: any) {
+    this.selectedItem4 = selected;
+    console.log("Dropdown 2 Selected:", selected);
+  }
+
+  handleSelectionChange5(selected: any) {
+    this.selectedItem5 = selected;
+    console.log("Dropdown 2 Selected:", selected);
+  }
+
+  handleSelectionChange6(selected: any) {
+    this.selectedItem6 = selected;
+    console.log("Dropdown 2 Selected:", selected);
+  }
+
+  handleSelectionChange7(selected: any) {
+    this.selectedItem7 = selected;
+    console.log("Dropdown 2 Selected:", selected);
+  }
+
+  handleSelectionChange8(selected: any) {
+    this.selectedItem8 = selected;
+    console.log("Dropdown 2 Selected:", selected);
+  }
 }

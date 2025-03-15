@@ -50,7 +50,102 @@
     <div class="columns-main-wrapper">
 <div class="left-main-column">
 
-    <div class="dropdowns-wrapper"></div>
+    <div class="dropdowns-wrapper">
+        <!-- <div class="dropdown-label-header flex align-items-center">
+            <div class="dropdown-label required">Service</div>
+        </div>
+        <div ngbDropdown class="d-inline-block">
+            Button showing selected value
+            <div class="dropdown-toggler" id="dropdownBasic1" [ngClass]="{'dropdown-placeholder':!selectedValue}" ngbDropdownToggle>
+                {{ selectedValue?.name || 'Select an option' }}
+            </div>
+      
+            Dropdown Menu
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button *ngFor="let option of ddOptions" 
+                      class="dropdown-item" 
+                      [class.active]="option.id === selectedValue?.id" 
+                      (click)="selectdd(option)">
+                {{ option.name }}
+              </button>
+            </div>
+          </div> -->
+        <div class="dropdown-container flex align-items-center">
+        <app-dropdown-wrapper 
+        [options]="dropdownOptions1" 
+        [selectedValue]="selectedItem1"
+        placeholder="Select Service"
+        (selectionChange)="handleSelectionChange1($event)"
+        [isRequired]="true"
+        [dropdownLabel]="'Service'">
+        </app-dropdown-wrapper>
+
+        <app-dropdown-wrapper 
+        [options]="dropdownOptions2" 
+        [selectedValue]="selectedItem2"
+        placeholder="Select Encounter Type"
+        (selectionChange)="handleSelectionChange2($event)"
+        [dropdownLabel]="'Encounter Type'">
+        </app-dropdown-wrapper>
+
+        <app-dropdown-wrapper 
+        [options]="dropdownOptions3" 
+        [selectedValue]="selectedItem3"
+        placeholder="MM-DD-YY"
+        (selectionChange)="handleSelectionChange3($event)"
+        [isRequired]="true"
+        [dropdownLabel]="'Start Date & Time'">
+        </app-dropdown-wrapper>
+
+        <app-dropdown-wrapper 
+        [options]="dropdownOptions4" 
+        [selectedValue]="selectedItem4"
+        placeholder="Select Duration"
+        (selectionChange)="handleSelectionChange4($event)"
+        [isRequired]="true"
+        [dropdownLabel]="'Duration'"
+        [customClass]="'duration-dd'">
+        </app-dropdown-wrapper>
+
+        </div>
+
+        <div class="dropdown-container flex align-items-center">
+        <app-dropdown-wrapper 
+        [options]="dropdownOptions5" 
+        [selectedValue]="selectedItem5"
+        placeholder="Select Treatment"
+        (selectionChange)="handleSelectionChange5($event)"
+        [isRequired]="true"
+        [dropdownLabel]="'Treatment'">
+        </app-dropdown-wrapper>
+
+        <app-dropdown-wrapper 
+        [options]="dropdownOptions6" 
+        [selectedValue]="selectedItem6"
+        placeholder="Select Speciality Type"
+        (selectionChange)="handleSelectionChange6($event)"
+        [dropdownLabel]="'Specialty Type'">
+        </app-dropdown-wrapper>
+
+        <app-dropdown-wrapper 
+        [options]="dropdownOptions7" 
+        [selectedValue]="selectedItem7"
+        placeholder="Select Reason"
+        (selectionChange)="handleSelectionChange7($event)"
+        [dropdownLabel]="'Reason for Visit'">
+        </app-dropdown-wrapper>
+
+        <app-dropdown-wrapper 
+        [options]="dropdownOptions8" 
+        [selectedValue]="selectedItem8"
+        placeholder="Select Rendering Provider"
+        (selectionChange)="handleSelectionChange8($event)"
+        [dropdownLabel]="'Rendering Provider'"
+        [customClass]="'render-provider-dd'">
+        </app-dropdown-wrapper>
+
+        </div>
+    </div>
     <div class="left-right-main-wrapper">
         <!-- Left Panel -->
   <div class="left-panel">

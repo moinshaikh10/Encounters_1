@@ -15,7 +15,8 @@ export class VitalSignComponent {
     this.modalService.open(content, {
       centered: true,
       backdrop: 'static', // Prevent closing on backdrop click
-      keyboard: false // Prevent closing with Escape key
+      keyboard: false, // Prevent closing with Escape key
+      animation: false    // Disable zoom-in effect
     });
   }
 }

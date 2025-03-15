@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+    font-size: 14px;
+}
 .flex {
     display: flex;
 }
@@ -33,7 +37,7 @@
         margin-bottom: 10px;
 
         .btn-close {
-            background-size: 14px;
+            background-size: 12px;
             box-shadow: unset;
             opacity: 1;
             filter: brightness(0) saturate(100%) invert(29%) sepia(13%) saturate(2783%) hue-rotate(158deg) brightness(91%) contrast(99%);

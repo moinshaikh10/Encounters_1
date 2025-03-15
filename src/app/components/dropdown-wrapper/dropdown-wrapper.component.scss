@@ -1,0 +1,56 @@
+::ng-deep {
+
+    .dropdown-wrapper {
+        display: inline-block;
+    }
+    
+    .dropdown-label-header {
+        margin-bottom: 2px;
+
+        .dropdown-label {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 21px;
+            letter-spacing: 0.5px;
+            vertical-align: middle;
+  
+            &.required:after {
+              content:" *";
+              color: red;
+            }
+        }
+    }
+
+    .dropdown-toggle {
+        width: 287px;
+        height: 31px;
+        border: 1px solid #DDDDDD;
+        border-radius: 4px;
+        box-sizing: border-box;
+        padding: 2px 12px;
+        cursor: pointer;
+        position: relative;
+        letter-spacing: 0.5px;
+        color: #333333;
+
+        &::after {
+            border: solid #8C8E90;
+            border-width: 0 1px 1px 0;
+            display: inline-block;
+            padding: 4px;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            position: absolute;
+            right: 10px;
+            top: 8px;
+        }
+
+        &.dropdown-placeholder {
+            color: #8C8E90;
+        }
+    }
+
+    .dropdown-menu {
+        width: 287px;
+    }
+}
