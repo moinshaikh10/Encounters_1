@@ -15,14 +15,47 @@
         font-weight: 700;
     }
 
-    input.search-input {
-        width: 400px;
-        border-radius: 8px;
-        border: 1px solid #DDDDDD;
-        height: 38px;
-        outline: none;
-        padding: 6px 30px 6px 10px;
+    .search-cont {
+        position: relative;
+
+        input.search-input {
+            width: 400px;
+            border-radius: 8px;
+            border: 1px solid #DDDDDD;
+            height: 38px;
+            outline: none;
+            padding: 6px 35px 6px 10px;
+
+            &::placeholder {
+                color: #8C8E90;
+                font-style: italic;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        .bi-search::before {
+            content: "\f52a";
+            position: absolute;
+            font-size: 16px;
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            color: #8C8E90;
+            font-weight: 600 !important;
+            cursor: pointer;
+        }
+
+        .bi-x-lg::before {
+            content: "\f659";
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            font-weight: 600;
+            color: #8C8E90;
+            cursor: pointer;
+        }
     }
+
     }
 
     .patient-details-main-wrapper {
@@ -64,6 +97,7 @@
 
             .value {
                 white-space: nowrap;
+                font-size: 14px;
             }
 
             table {
@@ -115,7 +149,7 @@
         .progressbar-header {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             justify-content: space-between;
 
             .bar-title-button {
@@ -130,9 +164,9 @@
             .pauseBtn {
                 border-radius: 24px;
                 min-height: 32px;
-        width: 80px;
-        box-sizing: border-box;
-        margin-left: 14px;
+                width: 80px;
+                box-sizing: border-box;
+                margin-left: 14px;
             }
 
             .percent-label {
@@ -157,6 +191,7 @@
         display: inline-flex;
         display: flex;
         flex-grow: 1;
+        height: min-content;
         // margin-top: 20px;
 
         .left-panel {
@@ -187,12 +222,13 @@
             box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1490196078);
             border-radius: 6px;
             flex-grow: 1;
-            height: calc(100vh - 253px);
+            // height: calc(100vh - 253px);
             padding: 10px 20px;
             // max-width: 1000px;
             width: 1000px;
             width: 100%;
             height: 452px;
+            height: 100%;
 
             .right-panel-header {
                 justify-content: space-between;
@@ -306,5 +342,33 @@
     // .dropdown-menu {
     //     width: 287px;
     // }
+
+    .dashboard-footer {
+        padding: 20px 0;
+
+
+        button {
+            border-radius: 21px;
+            height: 42px;
+            box-sizing: border-box;
+            width: 120px;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+
+            &.btn-primary:not(:hover) {
+                background-color: #009BC8;
+            }
+
+            &.btn-outline-secondary {
+                border-color: #8C8E90;
+                margin-right: 10px;
+
+                &:not(:hover) {
+                    color: #333333;
+                }
+            }
+        }
+    }
 }
 }

@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-vital-sign',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './vital-sign.component.html',
   styleUrl: './vital-sign.component.css'
 })

@@ -4,8 +4,9 @@
     </div>
     <div ngbDropdown class="d-inline-block">
         <!-- Button showing selected value -->
-        <div class="dropdown-toggler" id="dropdownBasic1" [ngClass]="{'dropdown-placeholder':!selectedValue}" ngbDropdownToggle>
-            {{ selectedValue?.name || 'Select an option' }}
+        <div class="dropdown-toggler" id="dropdownBasic1" [ngClass]="{'dropdown-placeholder':!selectedValue}" ngbDropdownToggle
+        [attr.title]="selectedValue ? selectedValue.name : null">
+            {{ selectedValue?.name || placeholder }}
         </div>
   
         <!-- Dropdown Menu -->
