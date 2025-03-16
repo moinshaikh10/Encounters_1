@@ -13,10 +13,11 @@ import { AppointmentsComponent } from '../appointments/appointments.component';
 import { MedicationsComponent } from '../medications/medications.component';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { DropdownWrapperComponent } from "../dropdown-wrapper/dropdown-wrapper.component";
+import { DateTimePickerComponent } from "../date-time-picker/date-time-picker.component";
 
 @Component({
   selector: 'app-main-dashboard',
-  imports: [CommonModule, NgbDropdownModule, MedicationsComponent, DropdownWrapperComponent],
+  imports: [CommonModule, NgbDropdownModule, MedicationsComponent, DropdownWrapperComponent, DateTimePickerComponent],
   templateUrl: './main-dashboard.component.html',
   styleUrl: './main-dashboard.component.scss'
 })
@@ -211,5 +212,12 @@ selectedValue:any = null; // Default selection
   handleSelectionChange8(selected: any) {
     this.selectedItem8 = selected;
     console.log("Dropdown 2 Selected:", selected);
+  }
+
+  selectedDateTime: Date | null = null;
+
+  handleDateTimeChange(date: Date) {
+    this.selectedDateTime = date;
+    console.log("Selected Date-Time:", this.selectedDateTime);
   }
 }
