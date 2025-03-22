@@ -17,7 +17,7 @@ import { DateTimePickerComponent } from "../date-time-picker/date-time-picker.co
 
 @Component({
   selector: 'app-main-dashboard',
-  imports: [CommonModule, NgbDropdownModule, MedicationsComponent, DropdownWrapperComponent, DateTimePickerComponent],
+  imports: [CommonModule, NgbDropdownModule, MedicationsComponent, DropdownWrapperComponent],
   templateUrl: './main-dashboard.component.html',
   styleUrl: './main-dashboard.component.scss'
 })

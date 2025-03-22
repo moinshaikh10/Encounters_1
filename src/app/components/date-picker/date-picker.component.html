@@ -1,0 +1,19 @@
+<!-- <form class="row row-cols-sm-auto"> -->
+    <!-- <div class="col-12"> -->
+        <div class="input-group-date-picker">
+            <input
+                class="form-control date-picker-input"
+                placeholder="MM-DD-YYYY"
+                name="dp"
+                [(ngModel)]="model"
+                (ngModelChange)="onDateChange($event)"
+                ngbDatepicker
+                #d="ngbDatepicker"
+                (click)="d.toggle()"
+            />
+            <div class="calendar-icon bi bi-calendar3"></div>
+            <!-- <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button> -->
+        </div>
+    <!-- </div> -->
+<!-- </form> -->
+<!-- <pre>Model: {{ model | json }}</pre> -->
