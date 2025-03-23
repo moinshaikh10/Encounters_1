@@ -20,6 +20,45 @@ export class ProblemsComponent {
 		config.roles = false;
   }
   
+  activeTab = 0; // default to first tab (index 0)
+  ProblemsListData:any[]=[];
+  searchTerm:string = "";
+  dateModel: NgbDateStruct | null = null;
+  selectedProblemtType: any = null; // Second dropdown selected value
+  selectedProblemStatus: any = null; // Second dropdown selected value
+
+  items = [
+    {code: "B16.9", name: "Acute Hepatitis B Without Delta Agent and Without Hepatic Coma (A)", status: "Rule Out"},
+    {code: "E08.1", name: "Diabetes Mellitus Due to Underlying Condition With Ketoacidosis (C)", status: "Released"},
+    {code: "E89", name: "Post Procedural Endocrine and Metabolic Complications and Disorders (C)", status: "Released"},
+    {code: "E89", name: "Post Procedural Endocrine and Metabolic Complications and Disorders (C)", status: "Released"},
+    { code: 'A0013', name: 'Cancer Screening', status: "Rule Out" },
+    { code: 'A0014', name: 'Diabetes Screening', status: "Released" },
+    { code: 'A001', name: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
+    { code: 'A002', name: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Released"},
+    { code: 'A003', name: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
+    { code: 'A004', name: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Released"},
+    { code: 'A005', name: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
+    { code: 'A006', name: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Released"},
+    { code: 'A007', name: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
+    { code: 'A008', name: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Released"},
+    { code: 'A009', name: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
+    { code: 'A0010', name: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Released"},
+    { code: 'A0011', name: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
+    { code: 'A0012', name: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
+  ];
+  selectedItems: boolean[] =[];
+
+  ngOnInit(){
+    this.ProblemsListData = [
+      {code: "B16.9", name: "Acute Hepatitis B Without Delta Agent and Without Hepatic Coma (A)", status: "Rule Out"},
+      {code: "E08.1", name: "Diabetes Mellitus Due to Underlying Condition With Ketoacidosis (C)", status: "Released"},
+      {code: "E89", name: "Post Procedural Endocrine and Metabolic Complications and Disorders (C)", status: "Released"},
+      {code: "E89", name: "Post Procedural Endocrine and Metabolic Complications and Disorders (C)", status: "Released"},
+    ];
+    // call this function after the table data
+    this.syncSelectedItems();
+  }
 
   open(content: any) {
     this.modalService.open(content, {
@@ -28,33 +67,8 @@ export class ProblemsComponent {
       keyboard: false, // Prevent closing with Escape key
       animation: false    // Disable zoom-in effect
     });
+    this.syncSelectedItems();
   }
-
-  activeTab = 0; // default to first tab (index 0)
-
-  items = [
-    { code: 'A0013', text: 'Cancer Screening', status: "Rule Out" },
-    { code: 'A0014', text: 'Diabetes Screening', status: "Released" },
-    { code: 'A001', text: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
-    { code: 'A002', text: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Released"},
-    { code: 'A003', text: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
-    { code: 'A004', text: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Released"},
-    { code: 'A005', text: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
-    { code: 'A006', text: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Released"},
-    { code: 'A007', text: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
-    { code: 'A008', text: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Released"},
-    { code: 'A009', text: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
-    { code: 'A0010', text: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Released"},
-    { code: 'A0011', text: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
-    { code: 'A0012', text: 'Post Procedural Endocrine and Metabolic Complications and Disorders, Not Elsewhere Classified (C)', status: "Rule Out"},
-  ];
-
-  selectedItems: boolean[] = new Array(this.items.length).fill(false);
-
-  ProblemsListData:any[]=[];
-
-  searchTerm:string = "";
-  dateModel: NgbDateStruct | null = null;
 
   toggleCheckbox(index: number): void {
     this.selectedItems[index] = !this.selectedItems[index];
@@ -64,8 +78,28 @@ export class ProblemsComponent {
     return this.selectedItems.some(item => item);
   }
 
-  selectedProblemtType: any = null; // Second dropdown selected value
-  selectedProblemStatus: any = null; // Second dropdown selected value
+  addSelectedItems(): void {
+    if (this.activeTab === 0){
+    this.items.forEach((item, index) => {
+      if (this.selectedItems[index]) {
+        // Check if it's not already added
+        const exists = this.ProblemsListData.some(p => p.code === item.code);
+        if (!exists) {
+          this.ProblemsListData.push({ ...item });
+        }
+      }
+    });
+  
+    // Optional: Reset selections
+    this.selectedItems = new Array(this.items.length).fill(false);
+  }
+  }
+
+  syncSelectedItems(): void {
+    this.selectedItems = this.items.map(item =>
+      this.ProblemsListData.some(problem => problem.code === item.code)
+    );
+  }
 
   problemType = [
     { id: 1, name: "Type 1" },

@@ -15,51 +15,27 @@
                     <th>Status</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>B16.9</td>
-                    <td>Acute Hepatitis B Without Delta Agent and Without Hepatic Coma (A)</td>
-                    <td><div>
-                        <span>
-                            Rule Out
-                        </span>
-                        <!-- <div class="inline-flex align-items-center">
-                            <div class="action-btn">+</div>
-                            <div class="action-btn">D</div>
-                        </div> -->
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>E08.1</td>
-                    <td>Diabetes Mellitus Due to Underlying Condition With Ketoacidosis (C)</td>
-                    <td><div>
-                        <span>
-                            Released
-                        </span>
-                        <!-- <div class="inline-flex align-items-center">
-                            <div class="action-btn">+</div>
-                            <div class="action-btn">D</div>
-                        </div> -->
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>E89</td>
-                    <td>Post Procedural Endocrine and Metabolic Complications and Disorders (C)</td>
-                    <td><div>
-                        <span>
-                            Released
-                        </span>
-                        <!-- <div class="inline-flex align-items-center">
-                            <div class="action-btn">+</div>
-                            <div class="action-btn">D</div>
-                        </div> -->
-                    </div>
-                    </td>
-                </tr>
+            <tbody *ngIf="ProblemsListData.length > 0; else noDataTemplate">
+               <tr *ngFor="let item of ProblemsListData">
+                <td>{{item.code}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.status}}</td>
+               </tr>
             </tbody>
         </table>
+
+        <!-- no data template -->
+        <ng-template #noDataTemplate>
+            <tbody>
+              <tr>
+                <td colspan="3">
+                  <div class="no-result-found" style="text-align: center;">
+                    There are no data to display.
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </ng-template>
     </div>
 </div>
 
@@ -89,7 +65,7 @@
                                     {{item.code}}
                                 </div>
                             </div>
-                            <div class="checkbox-text">{{item.text}}</div>
+                            <div class="checkbox-text">{{item.name}}</div>
                         <!-- <label class="form-check-label">
                             <strong>{{ item.code }}</strong> - {{ item.text }}
                         </label> -->
@@ -149,7 +125,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"  (click)="modal.close('Close click')">Cancel</button>
-            <button type="button" class="btn btn-primary" [ngClass]="{'disabled' : activeTab !== 0 || !isAnySelected()}" (click)="modal.close('Close click')">Add</button>
+            <button type="button" class="btn btn-primary" [ngClass]="{'disabled' : activeTab !== 0 || !isAnySelected()}" (click)="modal.close('Close click');addSelectedItems()">Add</button>
         </div>
       </div>
     </div>

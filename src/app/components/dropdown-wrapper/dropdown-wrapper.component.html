@@ -2,7 +2,7 @@
     <div class="dropdown-label-header flex align-items-center">
         <div class="dropdown-label" [ngClass]="{'required': isRequired}">{{dropdownLabel}}</div>
     </div>
-    <div ngbDropdown class="d-inline-block" (openChange)="resetSearch()">
+    <div ngbDropdown class="d-inline-block" (openChange)="resetSearch()" dropdownClass="dd-box">
         <!-- Button showing selected value -->
         <div class="dropdown-toggler" id="dropdownBasic1" [ngClass]="{'dropdown-placeholder':!selectedValue}" ngbDropdownToggle
         [attr.title]="selectedValue ? selectedValue.name : null" >
@@ -10,7 +10,7 @@
         </div>
   
         <!-- Dropdown Menu -->
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" dropdownClass="o-menu-list">
           <div class="search-contaier">
             <input type="text" class="search-input" [placeholder]="dropdownPlaceholder" [(ngModel)]="searchTerm">
             <span class="bi bi-search" *ngIf="!searchTerm"></span>

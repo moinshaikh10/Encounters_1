@@ -313,6 +313,7 @@
     
 }
 
+// scroll common css starts
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
@@ -334,5 +335,24 @@
     background: #009BC8;
     border-radius: 10px;
   }
-  
+
+// scroll common css ends
+
+// textarea common css starts
+textarea {
+    resize: vertical;
+    border-color: #DDDDDD;
+    width: 100%;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    outline: none;
+
+    &::placeholder {
+      color: #8C8E90;
+      font-style: italic;
+      letter-spacing: 0.5px;
+  }
+}
+// textarea common css ends
   
