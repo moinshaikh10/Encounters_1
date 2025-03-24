@@ -21,7 +21,7 @@
                   class="dropdown-item" 
                   [class.active]="option.id === selectedValue?.id" 
                   (click)="selectOption(option)">
-            {{ option.name }}
+                  <span [innerHTML]="option.name | highlightSearch:searchTerm"></span>
           </button>
           <!-- No Result Found -->
     <div *ngIf="filteredOptions.length === 0" class="text-center text-muted p-2">

@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { HighlightSearchPipe } from '../../highlight-search.pipe';
 
 @Component({
   selector: 'app-dropdown-wrapper',
-  imports: [CommonModule, NgbDropdownModule, FormsModule],
+  imports: [CommonModule, NgbDropdownModule, FormsModule, HighlightSearchPipe],
   templateUrl: './dropdown-wrapper.component.html',
   styleUrl: './dropdown-wrapper.component.scss'
 })
