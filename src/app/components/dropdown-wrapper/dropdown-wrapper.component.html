@@ -2,21 +2,32 @@
     <div class="dropdown-label-header flex align-items-center">
         <div class="dropdown-label" [ngClass]="{'required': isRequired}">{{dropdownLabel}}</div>
     </div>
-    <div ngbDropdown class="d-inline-block">
+    <div ngbDropdown class="d-inline-block" (openChange)="resetSearch()" dropdownClass="dd-box">
         <!-- Button showing selected value -->
         <div class="dropdown-toggler" id="dropdownBasic1" [ngClass]="{'dropdown-placeholder':!selectedValue}" ngbDropdownToggle
-        [attr.title]="selectedValue ? selectedValue.name : null">
+        [attr.title]="selectedValue ? selectedValue.name : null" >
             {{ selectedValue?.name || placeholder }}
         </div>
   
         <!-- Dropdown Menu -->
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button *ngFor="let option of options" 
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" dropdownClass="o-menu-list">
+          <div class="search-contaier">
+            <input type="text" class="search-input" [placeholder]="dropdownPlaceholder" [(ngModel)]="searchTerm">
+            <span class="bi bi-search" *ngIf="!searchTerm"></span>
+            <span class="bi bi-x-lg" *ngIf="searchTerm" (click)="resetSearch()"></span>
+        </div>
+        <div class="scrollable-cont">
+          <button *ngFor="let option of filteredOptions" 
                   class="dropdown-item" 
                   [class.active]="option.id === selectedValue?.id" 
                   (click)="selectOption(option)">
             {{ option.name }}
           </button>
+          <!-- No Result Found -->
+    <div *ngIf="filteredOptions.length === 0" class="text-center text-muted p-2">
+      No results found
+    </div>
+          </div>
         </div>
       </div>
 </div>

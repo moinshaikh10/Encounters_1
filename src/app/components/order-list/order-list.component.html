@@ -18,13 +18,27 @@
                     <th>End Date</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td colspan="6">
-                        <div class="no-result-found" style="text-align: center;">There are no active order items to display.</div>
-                    </td>
-                </tr>
+            <tbody *ngIf="orderListData.length > 0; else noDataTemplate">
+                <tr *ngFor="let item of orderListData">
+                    <td>{{ item.col1 }}</td>
+                    <td>{{ item.col2 }}</td>
+                    <td>{{ item.col3 }}</td>
+                    <!-- Bind your row data -->
+                  </tr>
             </tbody>
         </table>
+
+        <!-- no-data template -->
+        <ng-template #noDataTemplate>
+            <tbody>
+              <tr>
+                <td colspan="6">
+                  <div class="no-result-found" style="text-align: center;">
+                    There are no active order items to display.
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </ng-template>
     </div>
 </div>

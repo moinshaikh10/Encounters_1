@@ -1,1 +1,104 @@
-<p>primary-care-screening works!</p>
+<div class="problems-main-wrapper">
+    <div class="right-panel-header flex align-items-center">
+        <div class="right-panel-title">Primary Care Screening</div>
+        <!-- <div class="right-panel-add-btn flex align-items-center"> 
+            <span class="bi bi-plus"></span>
+            Add Problems
+        </div> -->
+    </div>
+    <div ngbAccordion [closeOthers]="true">
+        @for (item of items; track item) {
+            <div ngbAccordionItem [collapsed]="item !== 'Cholesterol Screening'">
+                <h2 ngbAccordionHeader>
+                    <button ngbAccordionButton>{{ item }}</button>
+                </h2>
+                <div ngbAccordionCollapse>
+                    <div ngbAccordionBody>
+                        <ng-container [ngSwitch]="item">
+                            <ng-template [ngSwitchCase]="'Cholesterol Screening'">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Test</th>
+                                            <th>Recommended Age</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Lipid Profile</td>
+                                            <td>Every 4-6 years after 20</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </ng-template>
+    
+                            <ng-template [ngSwitchCase]="'Cancer Screening'">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Cancer Type</th>
+                                            <th>Recommended Screening</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Breast Cancer</td>
+                                            <td>Mammogram every 2 years (50-74 years)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Colon Cancer</td>
+                                            <td>Colonoscopy every 10 years (50-75 years)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </ng-template>
+    
+                            <ng-template [ngSwitchCase]="'Diabetes Screening'">
+                                <p>Diabetes screening is important for early detection of Type 2 diabetes.</p>
+                                <ul>
+                                    <li>Fasting blood sugar test</li>
+                                    <li>Hemoglobin A1c test</li>
+                                </ul>
+                            </ng-template>
+    
+                            <ng-template [ngSwitchCase]="'Depression Screening'">
+                                <p>Depression screening includes self-assessment questionnaires and psychological evaluations.</p>
+                            </ng-template>
+    
+                            <ng-template [ngSwitchCase]="'Immunizations'">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Vaccine</th>
+                                            <th>Recommended Age</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Influenza</td>
+                                            <td>Every Year</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hepatitis B</td>
+                                            <td>At birth, then multiple doses</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </ng-template>
+    
+                            <ng-template [ngSwitchCase]="'Tobacco Use Cessation Counseling'">
+                                <p>Quitting tobacco can greatly improve health. Resources include:</p>
+                                <ul>
+                                    <li>Nicotine replacement therapy</li>
+                                    <li>Counseling sessions</li>
+                                    <li>Support groups</li>
+                                </ul>
+                            </ng-template>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    
+</div>

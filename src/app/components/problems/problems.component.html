@@ -1,7 +1,7 @@
 <div class="problems-main-wrapper">
     <div class="right-panel-header flex align-items-center">
         <div class="right-panel-title">Problems</div>
-        <div class="right-panel-add-btn flex align-items-center"> 
+        <div class="right-panel-add-btn flex align-items-center" (click)="open(content)"> 
             <span class="bi bi-plus"></span>
             Add Problems
         </div>
@@ -15,50 +15,118 @@
                     <th>Status</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>B16.9</td>
-                    <td>Acute Hepatitis B Without Delta Agent and Without Hepatic Coma (A)</td>
-                    <td><div>
-                        <span>
-                            Rule Out
-                        </span>
-                        <!-- <div class="inline-flex align-items-center">
-                            <div class="action-btn">+</div>
-                            <div class="action-btn">D</div>
-                        </div> -->
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>E08.1</td>
-                    <td>Diabetes Mellitus Due to Underlying Condition With Ketoacidosis (C)</td>
-                    <td><div>
-                        <span>
-                            Released
-                        </span>
-                        <!-- <div class="inline-flex align-items-center">
-                            <div class="action-btn">+</div>
-                            <div class="action-btn">D</div>
-                        </div> -->
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>E89</td>
-                    <td>Post Procedural Endocrine and Metabolic Complications and Disorders (C)</td>
-                    <td><div>
-                        <span>
-                            Released
-                        </span>
-                        <!-- <div class="inline-flex align-items-center">
-                            <div class="action-btn">+</div>
-                            <div class="action-btn">D</div>
-                        </div> -->
-                    </div>
-                    </td>
-                </tr>
+            <tbody *ngIf="ProblemsListData.length > 0; else noDataTemplate">
+               <tr *ngFor="let item of ProblemsListData">
+                <td>{{item.code}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.status}}</td>
+               </tr>
             </tbody>
         </table>
+
+        <!-- no data template -->
+        <ng-template #noDataTemplate>
+            <tbody>
+              <tr>
+                <td colspan="3">
+                  <div class="no-result-found" style="text-align: center;">
+                    There are no data to display.
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </ng-template>
     </div>
 </div>
+
+<ng-template #content let-modal>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable problem-modal-dialog">
+      <div class="modal-content modal-content-wrapper">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Problems</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.close('Close click')"></button>
+        </div>
+        <div class="modal-body">
+            <div class="problems-container-shadow">
+              <ul ngbNav #nav="ngbNav" class="nav nav-underline" [(activeId)]="activeTab">
+                <li [ngbNavItem]="0">
+                    <a ngbNavLink href="">Active Patient Problems</a>
+                    <ng-template ngbNavContent>
+                        <div *ngFor="let item of items; let i = index" 
+                            class="chechkbox-box flex align-items-start"
+                            [class.selected]="selectedItems[i]"
+                            (click)="toggleCheckbox(i)">
+                            <div class="flex align-items-center">
+                                    <input class="form-check-input me-2"
+                                    type="checkbox"
+                                    [(ngModel)]="selectedItems[i]"
+                                    (click)="$event.stopPropagation()" />
+                                <div class="checkbox-code">
+                                    {{item.code}}
+                                </div>
+                            </div>
+                            <div class="checkbox-text">{{item.name}}</div>
+                        <!-- <label class="form-check-label">
+                            <strong>{{ item.code }}</strong> - {{ item.text }}
+                        </label> -->
+                        </div>
+
+                    </ng-template>
+                </li>
+                <li [ngbNavItem]="1">
+                    <a ngbNavLink href="">Add a new Problem</a>
+                    <ng-template ngbNavContent>
+                        <div class="search-problem-container mb20">
+                          <div class="dropdown-label-header flex align-items-center">
+                            <div class="dropdown-label required">Problem</div>
+                          </div>
+                          <div class="search-contaier">
+                            <input type="text" class="search-input" placeholder="Search for a Problem" [(ngModel)]="searchTerm">
+                            <span class="bi bi-search" ></span>
+                            <span class="bi bi-x-lg" *ngIf="searchTerm"></span>
+                          </div>
+                        </div>
+                        <div class="added-date mb20">
+                            <div class="dropdown-label-header flex align-items-center">
+                                <div class="dropdown-label">Added Date</div>
+                              </div>
+                        <app-date-picker  [(model)]="dateModel"></app-date-picker>
+                        </div>
+                        <div class="problem-dropdown-wrapper flex align-items-center justify-content-space-between mb20">
+                            <app-dropdown-wrapper 
+                                [options]="problemType" 
+                                [selectedValue]="selectedProblemtType"
+                                [placeholder]="'Choose One'"
+                                (selectionChange)="handleSelectionProblemType($event)"
+                                [isRequired]="false"
+                                [dropdownLabel]="'Problem Type'">
+                                </app-dropdown-wrapper>
+                                <app-dropdown-wrapper 
+                                [options]="problemStatus" 
+                                [selectedValue]="selectedProblemStatus"
+                                [placeholder]="'Choose One'"
+                                (selectionChange)="handleSelectionProblemStatus($event)"
+                                [isRequired]="false"
+                                [dropdownLabel]="'Problem Status'">
+                            </app-dropdown-wrapper>
+                        </div>
+                        <div class="medical-note-wrapper">
+                            <div class="dropdown-label-header flex align-items-center">
+                                <div class="dropdown-label" >Medical Note</div>
+                            </div>
+                            <textarea id="medicalNote" placeholder="Enter medical note"></textarea>
+                        </div>
+                      </ng-template>
+                </li>
+            </ul>
+            
+            <div [ngbNavOutlet]="nav" class="mt-2"></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"  (click)="modal.close('Close click')">Cancel</button>
+            <button type="button" class="btn btn-primary" [ngClass]="{'disabled' : activeTab !== 0 || !isAnySelected()}" (click)="modal.close('Close click');addSelectedItems()">Add</button>
+        </div>
+      </div>
+    </div>
+</ng-template>
