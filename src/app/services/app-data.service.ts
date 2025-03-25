@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { User } from '../interfaces/user.interface';
-import { environment } from '../../../environments/environment';
-import { Patient } from '../interfaces/patient.interface';
-import { SimpleEncounter } from '../../encounters/interfaces/simple-encounter.interface';
+import { User } from '../core/interfaces/user.interface';
+import { environment } from '../environments/environment';
+import { Patient } from '../core/interfaces/patient.interface';
+import { SimpleEncounter } from '../core/interfaces/simple-encounter.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AppDataService {
