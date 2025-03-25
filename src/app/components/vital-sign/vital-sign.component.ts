@@ -6,10 +6,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-vital-sign',
   imports: [CommonModule],
   templateUrl: './vital-sign.component.html',
-  styleUrl: './vital-sign.component.css'
+  styleUrl: './vital-sign.component.scss',
 })
 export class VitalSignComponent {
-  isEditMode:boolean = false;
+  isEditMode: boolean = false;
   constructor(private modalService: NgbModal) {}
 
   open(content: any) {
@@ -17,7 +17,7 @@ export class VitalSignComponent {
       centered: true,
       backdrop: 'static', // Prevent closing on backdrop click
       keyboard: false, // Prevent closing with Escape key
-      animation: false    // Disable zoom-in effect
+      animation: false, // Disable zoom-in effect
     });
   }
 }

@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-documentation-list',
   imports: [],
   templateUrl: './documentation-list.component.html',
-  styleUrl: './documentation-list.component.css'
+  styleUrl: './documentation-list.component.scss',
 })
-export class DocumentationListComponent {
-
-}
+export class DocumentationListComponent {}

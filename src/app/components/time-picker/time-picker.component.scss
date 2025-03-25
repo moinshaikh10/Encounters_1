@@ -1,0 +1,38 @@
+::ng-deep {
+  .time-picker-main-wrapper {
+    ngb-timepicker {
+      font-size: 14px;
+    }
+
+    .ngb-tp-input-container {
+      width: 42px;
+      position: relative;
+
+      .chevron.ngb-tp-chevron {
+        &::before {
+          font-family: bootstrap-icons !important;
+          font-style: normal;
+          font-weight: normal !important;
+          font-variant: normal;
+          text-transform: none;
+          line-height: 1;
+          vertical-align: -0.125em;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          border-style: none;
+          left: 0;
+          color: #8c8e90;
+          content: '\F286';
+          position: absolute;
+          transform: unset;
+        }
+
+        &.bottom {
+          &::before {
+            content: ': \F282';
+          }
+        }
+      }
+    }
+  }
+}

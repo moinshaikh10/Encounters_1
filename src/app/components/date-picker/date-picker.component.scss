@@ -1,23 +1,21 @@
 ::ng-deep {
-    .input-group-date-picker {
-        display: inline-block;
-        position: relative;
+  .input-group-date-picker {
+    display: inline-block;
+    position: relative;
 
-        .date-picker-input {
-            border: 1px solid #DDDDDD;
-            border-radius: 4px !important;
-            min-width: 287px !important;
-            width: 287px !important;
-            flex: unset !important;
-        }
-
-        .bi-calendar3::before {
-            position: absolute;
-            top: 9px;
-            right: 20px;
-            color: #8C8E90;
-            pointer-events: none;
-        }
+    .date-picker-input {
+      border: 1px solid #dddddd;
+      border-radius: 4px !important;
+      width: 287px;
+      flex: unset !important;
     }
 
+    .bi-calendar3::before {
+      position: absolute;
+      top: 9px;
+      right: 20px;
+      color: #8c8e90;
+      pointer-events: none;
+    }
+  }
 }

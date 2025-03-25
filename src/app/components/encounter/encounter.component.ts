@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-encounter',
   imports: [],
   templateUrl: './encounter.component.html',
-  styleUrl: './encounter.component.css'
+  styleUrl: './encounter.component.scss',
 })
-export class EncounterComponent {
-
-}
+export class EncounterComponent {}

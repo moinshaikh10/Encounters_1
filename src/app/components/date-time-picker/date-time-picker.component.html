@@ -1,0 +1,102 @@
+<!-- <div class="d-flex align-items-center gap-3">
+    Date Picker
+    <div>
+      <label>Date:</label>
+      <input class="form-control" ngbDatepicker [(ngModel)]="selectedDate" (ngModelChange)="updateDateTime()" #d="ngbDatepicker">
+      <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">📅</button>
+    </div>
+  
+    Time Picker
+    <div>
+      <label>Time:</label>
+      <ngb-timepicker [(ngModel)]="selectedTime" (ngModelChange)="updateDateTime()"></ngb-timepicker>
+    </div>
+  </div>
+   -->
+<!-- 
+<div class="input-group-date-picker">
+  <input
+    class="form-control date-picker-input"
+    [value]="formatDateTime(dateTime)"
+    placeholder="MM-DD-YYYY hh:mm A"
+    (click)="d.toggle()"
+    name="dp"
+    readonly
+    ngbDatepicker
+    #d="ngbDatepicker"
+    [footerTemplate]="footerTemplate"
+    autoClose="false"
+    datepickerClass="date-picker-popup"
+  />
+
+  <div class="calendar-icon bi bi-calendar3"></div>
+</div>
+<ng-template #footerTemplate>
+  <hr class="my-0" />
+  <div class="timepicker-cont">
+    <div class="time-picker-main-wrapper">
+      <ngb-timepicker
+        [(ngModel)]="time"
+        [meridian]="true"
+        (ngModelChange)="onTimeChange($event)"
+      />
+    </div>
+  </div>
+  <button
+    class="btn btn-primary btn-sm m-2 float-end"
+    (click)="onSave(d); d.close()"
+  >
+    Save
+  </button>
+
+  <button
+    class="btn btn-outline-primary btn-sm m-2 float-start"
+    (click)="model = today"
+  >
+    Today
+  </button>
+</ng-template> -->
+
+<div class="date-time-picker-main-wrapper">
+  <div class="dropdown-label-header flex align-items-center">
+    <div class="dropdown-label required">Start Date & Time</div>
+  </div>
+  <div class="input-group-date-picker">
+    <input
+      class="form-control date-picker-input"
+      [placeholder]="placeholder"
+      [value]="displayValue"
+      readonly
+      ngbDatepicker
+      [(ngModel)]="model"
+      #d="ngbDatepicker"
+      (click)="d.toggle()"
+      [footerTemplate]="footerTemplate"
+      autoClose="false"
+      datepickerClass="date-picker-popup"
+    />
+    <div class="calendar-icon bi bi-calendar3"></div>
+  </div>
+
+  <ng-template #footerTemplate>
+    <hr class="my-0" />
+    <div class="timepicker-cont">
+      <div class="time-picker-main-wrapper">
+        <ngb-timepicker
+          [(ngModel)]="time"
+          [meridian]="meridian"
+          (ngModelChange)="onTimeChange($event)"
+        />
+      </div>
+    </div>
+    <!-- <button class="btn btn-primary btn-sm m-2 float-start" (click)="onSave(d)">
+      Save
+    </button> -->
+    <button
+      class="btn btn-outline-primary btn-sm m-2 float-end"
+      (click)="setToday()"
+    >
+      Today
+    </button>
+  </ng-template>
+</div>

@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-billing-code',
   imports: [],
   templateUrl: './billing-code.component.html',
-  styleUrl: './billing-code.component.css'
+  styleUrl: './billing-code.component.scss',
 })
-export class BillingCodeComponent {
-
-}
+export class BillingCodeComponent {}
