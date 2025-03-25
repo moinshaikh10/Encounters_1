@@ -13,7 +13,7 @@ import { AppointmentsComponent } from '../appointments/appointments.component';
 import { MedicationsComponent } from '../medications/medications.component';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { DropdownWrapperComponent } from "../dropdown-wrapper/dropdown-wrapper.component";
-import { DateTimePickerComponent } from "../date-time-picker/date-time-picker.component";
+// import { DateTimePickerComponent } from "../date-time-picker/date-time-picker.component";
 
 @Component({
   selector: 'app-main-dashboard',
