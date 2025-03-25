@@ -5,6 +5,7 @@ import { NgbAlertModule, NgbDatepickerModule, NgbModal, NgbModule, NgbNavConfig,
 import { DropdownWrapperComponent } from '../dropdown-wrapper/dropdown-wrapper.component';
 import { CustomDateParserFormatter } from '../../services/custom-date-parser-formatter';
 import { DatePickerComponent } from "../date-picker/date-picker.component";
+import { ProblemsService } from '../../services/problems.service';
 
 @Component({
   selector: 'app-problems',
@@ -14,7 +15,7 @@ import { DatePickerComponent } from "../date-picker/date-picker.component";
   styleUrl: './problems.component.scss'
 })
 export class ProblemsComponent {
-  constructor(private modalService: NgbModal, config: NgbNavConfig, private renderer: Renderer2) {
+  constructor(private problemService: ProblemsService, private modalService: NgbModal, config: NgbNavConfig, private renderer: Renderer2) {
     // customize default values of navs used by this component tree
 		config.destroyOnHide = false;
 		config.roles = false;
