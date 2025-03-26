@@ -1,0 +1,166 @@
+::ng-deep {
+  .appointment-modal-dialog {
+    .bi-pencil {
+      margin-right: 10px;
+
+      &::before {
+        font-size: 16px;
+        color: #0f5278;
+        position: relative;
+      }
+    }
+
+    .referral-needed-cont {
+      margin-bottom: 20px;
+      .referral-title {
+        margin-right: 15px;
+      }
+    }
+
+    .radio-label {
+      margin-bottom: 20px;
+    }
+
+    .radio-button-container {
+      margin-right: 20px;
+    }
+    .ngb-tp {
+      button.btn.btn-link {
+        padding: 0;
+        height: 17px;
+
+        .chevron.ngb-tp-chevron {
+          &::before {
+            top: -2px !important;
+          }
+        }
+      }
+    }
+    .input-group-date-picker .date-picker-input {
+      width: 157px;
+    }
+
+    .set-duration {
+      .dropdown-wrapper {
+        .dropdown-toggle,
+        .dropdown-menu {
+          width: 255px;
+        }
+      }
+    }
+
+    .date-time-duration {
+      gap: 20px;
+    }
+
+    .referral-needed-cont {
+      .radio-button-container {
+        margin-bottom: 0;
+      }
+    }
+
+    .reason-textarea {
+      .small-text {
+        font-size: 10px;
+      }
+      textarea {
+        min-width: 296px;
+        min-height: 84px;
+      }
+    }
+
+    .schedule-day-notes-wrapper {
+      margin-bottom: 30px;
+      .dropdown-label-header {
+        margin-bottom: 6px;
+        cursor: pointer;
+
+        .bi-chevron-down::before {
+          position: relative;
+          left: 6px;
+          top: 2px;
+        }
+      }
+
+      .schedule-day-cont {
+        border: 1px solid #dddddd;
+        background-color: #f7f7f7;
+        border-radius: 4px;
+        padding: 10px 30px;
+        /* font-family: Roboto; */
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        vertical-align: middle;
+        color: #333333;
+        position: relative;
+
+        .points {
+          position: relative;
+          &::after {
+            content: '';
+            height: 5px;
+            width: 5px;
+            display: inline-block;
+            background-color: #333333;
+            position: absolute;
+            left: -16px;
+            top: 9px;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+
+    .notes-container {
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+
+      .notes-display-container {
+        border-bottom: 1px solid #dddddd;
+        min-height: 100px;
+        max-height: 100px;
+        box-sizing: border-box;
+        background-color: #fff;
+        border-radius: 4px 4px 0 0;
+        padding: 10px 15px;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 23px;
+        letter-spacing: 0.5px;
+        vertical-align: middle;
+        color: #000000;
+        overflow-x: hidden;
+        overflow-y: auto;
+        word-wrap: break-word;
+      }
+
+      .textarea-parent {
+        position: relative;
+
+        textarea {
+          border-width: 0 1px 0 0;
+          resize: none;
+        }
+
+        .bi-send {
+          height: 62px;
+          width: 62px;
+          background-color: #fff;
+          border-radius: 0 0 4px 0;
+          cursor: pointer;
+
+          &::before {
+            font-size: 24px;
+            color: #0f5278;
+            transform: rotate(45deg);
+            position: relative;
+            left: -4px;
+          }
+        }
+      }
+    }
+  }
+}
