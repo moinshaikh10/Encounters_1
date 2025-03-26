@@ -20,18 +20,22 @@
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
           border-style: none;
-          left: 0;
+          left: -2px;
           color: #8c8e90;
           content: '\F286';
-          position: absolute;
+          position: relative;
           transform: unset;
         }
 
         &.bottom {
           &::before {
-            content: ': \F282';
+            content: '\F282';
           }
         }
+      }
+
+      .ngb-tp-input.form-control {
+        margin: 0;
       }
     }
   }

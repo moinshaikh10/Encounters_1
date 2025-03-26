@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import { Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgbAlertModule, NgbDatepickerModule, NgbModal, NgbModule, NgbNavConfig, NgbDateStruct, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAlertModule, NgbDatepickerModule, NgbModal, NgbModule, NgbNavConfig, NgbDateStruct, NgbDateParserFormatter, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { DropdownWrapperComponent } from '../dropdown-wrapper/dropdown-wrapper.component';
 import { CustomDateParserFormatter } from '../../services/custom-date-parser-formatter';
 import { DatePickerComponent } from "../date-picker/date-picker.component";
 import { ProblemsService } from '../../services/problems.service';
+import { Observable, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-problems',
-  imports: [CommonModule, FormsModule, NgbModule, DropdownWrapperComponent, NgbDatepickerModule, NgbAlertModule, DatePickerComponent],
+  imports: [CommonModule, FormsModule, NgbModule, DropdownWrapperComponent, NgbDatepickerModule, NgbAlertModule, DatePickerComponent, NgbTypeaheadModule],
   providers: [{ provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter }],
   templateUrl: './problems.component.html',
   styleUrl: './problems.component.scss'
@@ -27,6 +29,19 @@ export class ProblemsComponent {
   dateModel: NgbDateStruct | null = null;
   selectedProblemtType: any = null; // Second dropdown selected value
   selectedProblemStatus: any = null; // Second dropdown selected value
+  
+  model: any = '';
+  isSearching = false;
+
+  @ViewChild('typeaheadInput') typeaheadInput!: ElementRef;
+
+  states = [
+    { id: 1, code: 'AL', name: 'Alabama fwefewf wefwefwef wefewfew fewfewf ewfewfwef wefewfewf ewfewfewf ewfewfew fewfewf ewfewfew fewfewf ewfwefewf ewfewfew few' },
+    { id: 2, code: 'AK', name: 'Alaska' },
+    { id: 3, code: 'AZ', name: 'Arizona' },
+    { id: 4, code: 'AR', name: 'Arkansas' },
+    { id: 5, code: 'CA', name: 'California' }
+  ];
 
   items = [
     {code: "B16.9", name: "Acute Hepatitis B Without Delta Agent and Without Hepatic Coma (A)", status: "Rule Out"},
@@ -59,6 +74,9 @@ export class ProblemsComponent {
     ];
     // call this function after the table data
     this.syncSelectedItems();
+
+    // pre-select problem search value
+    this.model = this.states.find(state => state.code === 'AK');
   }
 
   open(content: any) {
@@ -69,6 +87,9 @@ export class ProblemsComponent {
       animation: false    // Disable zoom-in effect
     });
     this.syncSelectedItems();
+
+    // select tab 0 on modal open
+    this.activeTab = 0;
   }
 
   toggleCheckbox(index: number): void {
@@ -119,5 +140,28 @@ export class ProblemsComponent {
 
   handleSelectionProblemStatus(selected: any) {
     this.selectedProblemStatus = selected;
+  }
+
+  search = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map(term => {
+        this.isSearching = !!term;
+        return term.length < 2
+          ? []
+          : this.states
+              .filter(state => state.name.toLowerCase().includes(term.toLowerCase()))
+              .slice(0, 10);
+      })
+    );
+
+  inputFormatter = (x: any) => x?.name || '';
+  resultFormatter = (x: any) => x.name;
+
+  resetSearch() {
+    this.model = '';
+    this.isSearching = false;
+    setTimeout(() => this.typeaheadInput.nativeElement.focus(), 0);
   }
 }

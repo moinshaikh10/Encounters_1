@@ -81,9 +81,17 @@
                             <div class="dropdown-label required">Problem</div>
                           </div>
                           <div class="search-contaier">
-                            <input type="text" class="search-input" placeholder="Search for a Problem" [(ngModel)]="searchTerm">
-                            <span class="bi bi-search" ></span>
-                            <span class="bi bi-x-lg" *ngIf="searchTerm"></span>
+                            <input type="text" class="search-input" placeholder="Search for a Problem"  
+                            #typeaheadInput
+                            [(ngModel)]="model"
+                            [ngbTypeahead]="search"
+                            [resultFormatter]="resultFormatter"
+                            [inputFormatter]="inputFormatter"
+                            (ngModelChange)="isSearching = !!model"
+                            popupClass="type-head-popup"
+                            >
+                            <span class="bi bi-search" *ngIf="!isSearching"></span>
+                            <span class="bi bi-x-lg" *ngIf="isSearching" (click)="resetSearch()"></span>
                           </div>
                         </div>
                         <div class="added-date mb20">
