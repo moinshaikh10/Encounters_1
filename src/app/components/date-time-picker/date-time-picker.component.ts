@@ -190,6 +190,8 @@ export class DateTimePickerComponent {
   @Input() meridian: boolean = true;
   @Input() placeholder = 'MM-DD-YYYY --:-- --';
   @Input() disabled = false;
+  @Input() label: string = 'Start Date & Time';
+  @Input() isRequired: boolean = false;
 
   @Output() dateTimeChange = new EventEmitter<Date>();
   @Output() modelChange = new EventEmitter<NgbDateStruct>();

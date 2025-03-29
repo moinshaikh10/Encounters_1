@@ -59,7 +59,9 @@
 
 <div class="date-time-picker-main-wrapper">
   <div class="dropdown-label-header flex align-items-center">
-    <div class="dropdown-label required">Start Date & Time</div>
+    <div class="dropdown-label" [ngClass]="{ required: isRequired }">
+      {{ label }}
+    </div>
   </div>
   <div class="input-group-date-picker">
     <input

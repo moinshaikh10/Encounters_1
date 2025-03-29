@@ -1,1 +1,29 @@
-<p>document-encounter works!</p>
+<div class="document-encounter-main-wrapper">
+  <div class="right-panel-header flex align-items-center">
+    <div class="right-panel-title">Document Encounter</div>
+  </div>
+  <ul ngbNav #nav="ngbNav" class="nav nav-underline" [activeId]="0">
+    <li [ngbNavItem]="0">
+      <a ngbNavLink href="">Subjective</a>
+      <ng-template ngbNavContent> subjective</ng-template>
+    </li>
+    <li [ngbNavItem]="1">
+      <a ngbNavLink href="">Objective</a>
+      <ng-template ngbNavContent> objective</ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink href="">Assessment</a>
+      <ng-template ngbNavContent>assessment </ng-template>
+    </li>
+    <li [ngbNavItem]="3">
+      <a ngbNavLink href="">Plan</a>
+      <ng-template ngbNavContent> plan</ng-template>
+    </li>
+    <li [ngbNavItem]="4">
+      <a ngbNavLink href="">Education</a>
+      <ng-template ngbNavContent>education </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

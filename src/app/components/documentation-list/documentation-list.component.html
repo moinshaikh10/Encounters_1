@@ -1,35 +1,256 @@
 <div class="allergies-main-wrapper">
-    <div class="right-panel-header flex align-items-center">
-        <div class="right-panel-title">Documentation List</div>
-        <div class="right-panel-add-btn flex align-items-center"> 
-            <span class="bi bi-plus"></span>
-            Add Forms
-        </div>
+  <div class="right-panel-header flex align-items-center">
+    <div class="right-panel-title">Documentation List</div>
+    <div
+      class="right-panel-add-btn flex align-items-center"
+      (click)="openAddModal(content)"
+    >
+      <span class="bi bi-plus"></span>
+      Add Forms
     </div>
-    <div class="table-wrapper">
-        <table class="table table-striped table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Documentation Type</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Dental</td>
-                    <td>
-                        <div class="value-and-icon-container flex align-items-center justify-content-space-between ">
-                            <span class="oxygen-value">
-                                Dental Consent for Exam and X-Rays
-                            </span>
-                            <div class="inline-flex align-items-center">
-                                <div class="action-btn align-items-center justify-content-center bi bi-eye"></div>
-                                <div class="action-btn align-items-center justify-content-center bi bi-trash"></div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  </div>
+  <div class="table-wrapper">
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Documentation Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Dental</td>
+          <td>
+            <div
+              class="value-and-icon-container flex align-items-center justify-content-space-between"
+            >
+              <span class="oxygen-value">
+                Dental Consent for Exam and X-Rays
+              </span>
+              <div class="inline-flex align-items-center">
+                <div
+                  class="action-btn align-items-center justify-content-center bi bi-eye"
+                ></div>
+                <div
+                  class="action-btn align-items-center justify-content-center bi bi-trash"
+                ></div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+
+<!-- add documention list modal -->
+<ng-template #content let-modal>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable allergy-modal-dialog"
+  >
+    <div class="modal-content modal-content-wrapper">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Forms</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="modal.close('Close click')"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="shadow-box-parent flex">
+          <div class="document-container-shadow">
+            <ul
+              ngbNav
+              #nav="ngbNav"
+              class="nav nav-underline"
+              [activeId]="activeTab"
+              (navChange)="onNavChange($event)"
+            >
+              <li [ngbNavItem]="0">
+                <a ngbNavLink href="">Upload Forms</a>
+                <ng-template ngbNavContent>
+                  <div class="file-uploader">
+                    <div
+                      class="drag-drop-area"
+                      (dragover)="onDragOver($event)"
+                      (dragleave)="onDragLeave($event)"
+                      (drop)="onDrop($event)"
+                    >
+                      <p>Drag and Drop, Paste<br />or</p>
+                      <button
+                        type="button"
+                        class="btn btn-link link-btn"
+                        (click)="fileInput.click()"
+                      >
+                        Browse file
+                      </button>
+                      <input
+                        #fileInput
+                        type="file"
+                        (change)="onFileSelected($event)"
+                        hidden
+                      />
+                    </div>
+                    <div *ngIf="uploadedFile" class="uploaded-file">
+                      <div>
+                        Attached file:
+                        <div class="file-name">{{ uploadedFile.name }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="1">
+                <a ngbNavLink href="">Add New Forms</a>
+                <ng-template ngbNavContent>
+                  <div class="option-row flex align-items-center mb20">
+                    <app-date-time-picker
+                      [label]="'Date of Service'"
+                      [(model)]="dateStruct"
+                      [(time)]="timeStruct"
+                      (dateTimeChange)="onDateTimeSelected($event)"
+                    ></app-date-time-picker>
+                  </div>
+                  <div
+                    class="option-row flex align-items-center justify-content-between mb20"
+                  >
+                    <app-dropdown-wrapper
+                      [options]="sectionOptions"
+                      [selectedValue]="selectedSection"
+                      [placeholder]="'Choose One'"
+                      (selectionChange)="handleSectionSelection($event)"
+                      [dropdownLabel]="'Section'"
+                    >
+                    </app-dropdown-wrapper>
+
+                    <app-dropdown-wrapper
+                      [options]="typeOptions"
+                      [selectedValue]="selectedType"
+                      [placeholder]="'Choose One'"
+                      (selectionChange)="handleTypeSelection($event)"
+                      [dropdownLabel]="'Type'"
+                    >
+                    </app-dropdown-wrapper>
+                  </div>
+                  <div class="start-button link-btn flex align-items-center">
+                    <div>Start</div>
+                    <div class="bi bi-chevron-down"></div>
+                  </div>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="2">
+                <a ngbNavLink href="">Add Existing Forms</a>
+                <ng-template ngbNavContent>
+                  <div class="search-cont">
+                    <input
+                      type="text"
+                      class="search-input"
+                      placeholder="Enter Form Name or Section Header to Filter"
+                    />
+                    <span class="bi bi-search"></span>
+                    <span class="bi bi-x-lg" style="display: none"></span>
+                  </div>
+                  <!-- <div class="search-cont" *ngIf="listLevel === 0">
+                    <input
+                      type="text"
+                      class="search-input"
+                      placeholder="Enter Form Name or Section Header to Filter"
+                    />
+                    <span class="bi bi-search"></span>
+                  </div> -->
+
+                  <!-- Date List -->
+                  <div *ngIf="listLevel === 0" class="list-container">
+                    <div
+                      class="list-item"
+                      *ngFor="let date of dateList"
+                      (click)="navigateTo(1, date)"
+                    >
+                      {{ date.date }}
+                      <span class="bi bi-chevron-right"></span>
+                    </div>
+                  </div>
+
+                  <!-- Name List -->
+                  <div *ngIf="listLevel === 1" class="list-container">
+                    <div
+                      class="list-item"
+                      *ngFor="let name of selectedDate?.nameList"
+                      (click)="navigateTo(2, name)"
+                    >
+                      {{ name.name }}
+                      <span class="bi bi-chevron-right"></span>
+                    </div>
+                  </div>
+
+                  <!-- Detailed List -->
+                  <div *ngIf="listLevel === 2" class="list-container">
+                    <div
+                      class="list-item"
+                      *ngFor="let item of selectedName?.detailedList"
+                      (click)="moveToRightContainer(item)"
+                    >
+                      <div class="item-details">
+                        <div>{{ item.date }}</div>
+                        <div>{{ item.name }}</div>
+                        <div>{{ item.secondaryName }}</div>
+                      </div>
+                      <span class="bi bi-plus"></span>
+                    </div>
+                  </div>
+
+                  <div
+                    class="back-button"
+                    *ngIf="listLevel > 0"
+                    (click)="navigateTo(listLevel - 1)"
+                  >
+                    <span class="bi bi-chevron-left link-btn"></span>
+                  </div>
+                </ng-template>
+              </li>
+            </ul>
+
+            <div [ngbNavOutlet]="nav" class="mt-2"></div>
+          </div>
+          <div
+            class="document-container-shadow another-options"
+            *ngIf="activeTab === 2"
+          >
+            <!-- Right Container -->
+            <div class="right-container" *ngIf="rightContainerItems.length > 0">
+              <div class="summary-title">Summary List</div>
+              <div class="list-container">
+                <div
+                  class="list-item"
+                  *ngFor="let item of rightContainerItems"
+                  (click)="moveToLeftContainer(item)"
+                >
+                  <div class="item-details">
+                    <div>{{ item.date }}</div>
+                    <div>{{ item.name }}</div>
+                    <div>{{ item.secondaryName }}</div>
+                  </div>
+                  <span class="bi bi-check-lg"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          data-bs-dismiss="modal"
+          (click)="modal.close('Close click')"
+        >
+          Cancel
+        </button>
+        <button type="button" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

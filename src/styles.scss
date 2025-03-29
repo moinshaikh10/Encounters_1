@@ -98,6 +98,7 @@
 .nav-underline .show > .nav-link {
   color: #0080a5;
   border-bottom: 2px solid #009bc8;
+  box-shadow: unset;
 }
 
 .nav-underline .nav-link:focus,
@@ -132,6 +133,27 @@
 
 .mb20 {
   margin-bottom: 20px;
+}
+
+.gap30 {
+  gap: 30px;
+}
+
+.gap20 {
+  gap: 20px;
+}
+
+.gap10 {
+  gap: 10px;
+}
+
+.link-btn {
+  color: #009bc8;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 23px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
 }
 
 .modal-dialog {

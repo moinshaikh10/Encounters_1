@@ -117,6 +117,8 @@
           >
           </app-dropdown-wrapper> -->
           <app-date-time-picker
+            [label]="'Start Date & Time'"
+            [isRequired]="true"
             [(model)]="dateStruct"
             [(time)]="timeStruct"
             (dateTimeChange)="onDateTimeSelected($event)"
