@@ -35,6 +35,10 @@
 .table {
   border-color: #dddddd;
 
+  > thead {
+    box-shadow: 1px 2px 4px 0px rgba(17, 17, 17, 0.1490196078);
+  }
+
   th {
     background: linear-gradient(180deg, #ffffff 0%, #f4f4f4 100%);
     font-weight: 500;
@@ -42,6 +46,9 @@
     line-height: 23px;
     letter-spacing: 0.5px;
     color: #333333;
+    vertical-align: middle;
+    cursor: pointer;
+    position: relative;
   }
 }
 
@@ -130,6 +137,44 @@
   }
 }
 // checkbox common css ends
+
+// Accordion css starts
+.accordion-item {
+  border-color: #dddddd;
+  border-top: 1px solid #dddddd !important;
+  border-radius: 4px;
+  margin-bottom: 10px;
+
+  &.isActive {
+    box-shadow: 1px 2px 4px 0px #00000026;
+  }
+
+  .accordion-header {
+    .accordion-button {
+      background: linear-gradient(180deg, #ffffff 0%, #f4f4f4 100%);
+      box-shadow: unset;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 23px;
+      letter-spacing: 0.5px;
+      vertical-align: middle;
+      border-radius: 4px !important;
+      padding: 10px 20px;
+
+      &:not(.collapsed) {
+        border-bottom: 1px solid #dddddd;
+        color: #009bc8;
+        transition: unset;
+        border-radius: 4px 4px 0 0 !important;
+      }
+
+      &::after {
+        color: #8c8e90;
+      }
+    }
+  }
+}
+// Accordion css ends
 
 .mb20 {
   margin-bottom: 20px;

@@ -106,6 +106,7 @@ export class DocumentationListComponent {
     if (modalDialog) {
       if (changeEvent.nextId === 2) {
         this.renderer.addClass(modalDialog, 'existing-form');
+        this.listLevel = 0; // Reset list level when navigating to the second tab
       } else {
         this.renderer.removeClass(modalDialog, 'existing-form');
       }

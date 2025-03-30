@@ -1,47 +1,57 @@
 <div class="allergies-main-wrapper">
-    <div class="right-panel-header flex align-items-center">
-        <div class="right-panel-title">Encounter List</div>
-        <div class="right-panel-add-btn flex align-items-center"> 
-            <span class="bi bi-plus"></span>
-            Add Encounter
-        </div>
+  <div class="right-panel-header flex align-items-center">
+    <div class="right-panel-title">Encounter List</div>
+    <div class="right-panel-add-btn flex align-items-center">
+      <span class="bi bi-plus"></span>
+      Add Encounter
     </div>
-    <div class="table-wrapper">
-        <table class="table table-striped table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th>Added Date</th>
-                    <th>Note Type</th>
-                    <th>QHP</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>31/03/2025 03:30 PM</td>
-                    <td>Medical</td>
-                    <td>Bonnie Bernard</td>
-                </tr>
-                <tr>
-                    <td>31/03/2025 03:30 PM</td>
-                    <td>Medical</td>
-                    <td>Bonnie Bernard</td>
-                </tr>
-                <tr>
-                    <td>31/03/2025 03:30 PM</td>
-                    <td>Medical</td>
-                    <td>Bonnie Bernard</td>
-                </tr>
-                <tr>
-                    <td>31/03/2025 03:30 PM</td>
-                    <td>Medical</td>
-                    <td>Bonnie Bernard</td>
-                </tr>
-                <tr>
-                    <td>31/03/2025 03:30 PM</td>
-                    <td>Medical</td>
-                    <td>Bonnie Bernard</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  </div>
+  <div class="table-wrapper">
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+        <tr>
+          <th (click)="sortTable('addedDate')">
+            Added Date
+            <span
+              class="sort-icon bi bi-chevron-down"
+              [ngClass]="{
+                active: sortColumn === 'addedDate',
+                ascending: sortColumn === 'addedDate' && sortDirection,
+                descending: sortColumn === 'addedDate' && !sortDirection
+              }"
+            ></span>
+          </th>
+          <th (click)="sortTable('noteType')">
+            Note Type
+            <span
+              class="sort-icon bi bi-chevron-down"
+              [ngClass]="{
+                active: sortColumn === 'noteType',
+                ascending: sortColumn === 'noteType' && sortDirection,
+                descending: sortColumn === 'noteType' && !sortDirection
+              }"
+            ></span>
+          </th>
+          <th (click)="sortTable('qhp')">
+            QHP
+            <span
+              class="sort-icon bi bi-chevron-down"
+              [ngClass]="{
+                active: sortColumn === 'qhp',
+                ascending: sortColumn === 'qhp' && sortDirection,
+                descending: sortColumn === 'qhp' && !sortDirection
+              }"
+            ></span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let encounter of encounters">
+          <td>{{ encounter.addedDate }}</td>
+          <td>{{ encounter.noteType }}</td>
+          <td>{{ encounter.qhp }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -1,104 +1,218 @@
 <div class="problems-main-wrapper">
-    <div class="right-panel-header flex align-items-center">
-        <div class="right-panel-title">Primary Care Screening</div>
-        <!-- <div class="right-panel-add-btn flex align-items-center"> 
-            <span class="bi bi-plus"></span>
-            Add Problems
-        </div> -->
-    </div>
-    <div ngbAccordion [closeOthers]="true">
-        @for (item of items; track item) {
-            <div ngbAccordionItem [collapsed]="item !== 'Cholesterol Screening'">
-                <h2 ngbAccordionHeader>
-                    <button ngbAccordionButton>{{ item }}</button>
-                </h2>
-                <div ngbAccordionCollapse>
-                    <div ngbAccordionBody>
-                        <ng-container [ngSwitch]="item">
-                            <ng-template [ngSwitchCase]="'Cholesterol Screening'">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Test</th>
-                                            <th>Recommended Age</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Lipid Profile</td>
-                                            <td>Every 4-6 years after 20</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </ng-template>
-    
-                            <ng-template [ngSwitchCase]="'Cancer Screening'">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Cancer Type</th>
-                                            <th>Recommended Screening</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Breast Cancer</td>
-                                            <td>Mammogram every 2 years (50-74 years)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Colon Cancer</td>
-                                            <td>Colonoscopy every 10 years (50-75 years)</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </ng-template>
-    
-                            <ng-template [ngSwitchCase]="'Diabetes Screening'">
-                                <p>Diabetes screening is important for early detection of Type 2 diabetes.</p>
-                                <ul>
-                                    <li>Fasting blood sugar test</li>
-                                    <li>Hemoglobin A1c test</li>
-                                </ul>
-                            </ng-template>
-    
-                            <ng-template [ngSwitchCase]="'Depression Screening'">
-                                <p>Depression screening includes self-assessment questionnaires and psychological evaluations.</p>
-                            </ng-template>
-    
-                            <ng-template [ngSwitchCase]="'Immunizations'">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Vaccine</th>
-                                            <th>Recommended Age</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Influenza</td>
-                                            <td>Every Year</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hepatitis B</td>
-                                            <td>At birth, then multiple doses</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </ng-template>
-    
-                            <ng-template [ngSwitchCase]="'Tobacco Use Cessation Counseling'">
-                                <p>Quitting tobacco can greatly improve health. Resources include:</p>
-                                <ul>
-                                    <li>Nicotine replacement therapy</li>
-                                    <li>Counseling sessions</li>
-                                    <li>Support groups</li>
-                                </ul>
-                            </ng-template>
-                        </ng-container>
+  <div class="right-panel-header flex align-items-center">
+    <div class="right-panel-title">Primary Care Screening</div>
+  </div>
+  <div ngbAccordion [closeOthers]="true">
+    <!-- Cholesterol Screening Accordion -->
+    <div
+      ngbAccordionItem
+      [collapsed]="activeItemId !== 'cholesterol'"
+      [ngClass]="{ isActive: activeItemId === 'cholesterol' }"
+      (click)="toggleAccordion('cholesterol')"
+    >
+      <h2 ngbAccordionHeader>
+        <button ngbAccordionButton>Cholesterol Screening</button>
+      </h2>
+      <div ngbAccordionCollapse>
+        <div ngbAccordionBody>
+          <div class="table-wrapper">
+            <table class="table table-striped table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th>Test Date</th>
+                  <th>Total (mg/dL)</th>
+                  <th>HDL (mg/dL)</th>
+                  <th>LDL (mg/dL)</th>
+                  <th>Triglycerides (mg/dL)</th>
+                  <th>Chol/HDL Ratio</th>
+                  <th>LDL/HDL Ratio</th>
+                  <th>Risk Level</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>02/25/2025</td>
+                  <td>120</td>
+                  <td>78</td>
+                  <td>105</td>
+                  <td>120</td>
+                  <td>3.5</td>
+                  <td>2.0</td>
+                  <td>
+                    <div
+                      class="value-and-icon-container flex align-items-center justify-content-space-between"
+                    >
+                      <span class="oxygen-value"> Normal </span>
+                      <div class="inline-flex align-items-center">
+                        <div
+                          class="action-btn align-items-center justify-content-center bi bi-eye"
+                        ></div>
+                      </div>
                     </div>
-                </div>
-            </div>
-        }
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-    
+
+    <!-- Cancer Screening Accordion -->
+    <div
+      ngbAccordionItem
+      [collapsed]="activeItemId !== 'cancer'"
+      [ngClass]="{ isActive: activeItemId === 'cancer' }"
+      (click)="toggleAccordion('cancer')"
+    >
+      <h2 ngbAccordionHeader>
+        <button ngbAccordionButton>Cancer Screening</button>
+      </h2>
+      <div ngbAccordionCollapse>
+        <div ngbAccordionBody>
+          <div class="table-wrapper">
+            <table class="table table-striped table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th>Test Date</th>
+                  <th>Cancer Type</th>
+                  <th>Screening Test</th>
+                  <th>Result</th>
+                  <th>Reference Range</th>
+                  <th>Interpretation</th>
+                  <th>Next Test</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>02/25/2025</td>
+                  <td>Cervical Cancer</td>
+                  <td>Pap Smear</td>
+                  <td>Negative</td>
+                  <td>NA</td>
+                  <td>No follow-up needed</td>
+                  <td>
+                    <div
+                      class="value-and-icon-container flex align-items-center justify-content-space-between"
+                    >
+                      <span class="oxygen-value"> HPV Vaccinated </span>
+                      <div class="inline-flex align-items-center">
+                        <div
+                          class="action-btn align-items-center justify-content-center bi bi-eye"
+                        ></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diabetes Screening Accordion -->
+    <div
+      ngbAccordionItem
+      [collapsed]="activeItemId !== 'diabetes'"
+      [ngClass]="{ isActive: activeItemId === 'diabetes' }"
+      (click)="toggleAccordion('diabetes')"
+    >
+      <h2 ngbAccordionHeader>
+        <button ngbAccordionButton>Diabetes Screening</button>
+      </h2>
+      <div ngbAccordionCollapse>
+        <div ngbAccordionBody>
+          <h3>Diabetes Screening</h3>
+          <p>
+            Diabetes screening is important for early detection of Type 2
+            diabetes.
+          </p>
+          <ul>
+            <li>Fasting blood sugar test</li>
+            <li>Hemoglobin A1c test</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Depression Screening Accordion -->
+    <div
+      ngbAccordionItem
+      [collapsed]="activeItemId !== 'depression'"
+      [ngClass]="{ isActive: activeItemId === 'depression' }"
+      (click)="toggleAccordion('depression')"
+    >
+      <h2 ngbAccordionHeader>
+        <button ngbAccordionButton>Depression Screening</button>
+      </h2>
+      <div ngbAccordionCollapse>
+        <div ngbAccordionBody>
+          <h3>Depression Screening</h3>
+          <p>
+            Depression screening includes self-assessment questionnaires and
+            psychological evaluations.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Immunizations Accordion -->
+    <div
+      ngbAccordionItem
+      [collapsed]="activeItemId !== 'immunizations'"
+      [ngClass]="{ isActive: activeItemId === 'immunizations' }"
+      (click)="toggleAccordion('immunizations')"
+    >
+      <h2 ngbAccordionHeader>
+        <button ngbAccordionButton>Immunizations</button>
+      </h2>
+      <div ngbAccordionCollapse>
+        <div ngbAccordionBody>
+          <h3>Immunizations</h3>
+          <table class="table table-striped table-hover table-bordered">
+            <thead>
+              <tr>
+                <th>Vaccine</th>
+                <th>Recommended Age</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Influenza</td>
+                <td>Every Year</td>
+              </tr>
+              <tr>
+                <td>Hepatitis B</td>
+                <td>At birth, then multiple doses</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tobacco Use Cessation Accordion -->
+    <div
+      ngbAccordionItem
+      [collapsed]="activeItemId !== 'tobacco'"
+      [ngClass]="{ isActive: activeItemId === 'tobacco' }"
+      (click)="toggleAccordion('tobacco')"
+    >
+      <h2 ngbAccordionHeader>
+        <button ngbAccordionButton>Tobacco Use Cessation Counseling</button>
+      </h2>
+      <div ngbAccordionCollapse>
+        <div ngbAccordionBody>
+          <h3>Tobacco Use Cessation Counseling</h3>
+          <p>Quitting tobacco can greatly improve health. Resources include:</p>
+          <ul>
+            <li>Nicotine replacement therapy</li>
+            <li>Counseling sessions</li>
+            <li>Support groups</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

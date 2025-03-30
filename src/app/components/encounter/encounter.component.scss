@@ -1,0 +1,26 @@
+::ng-deep {
+  .sort-icon {
+    position: absolute;
+    right: 10px;
+    // font-size: 12px;
+    color: #dddddd; /* Default color for inactive icons */
+    transition: color 0.3s ease, transform 0.3s ease;
+
+    &::before {
+      font-size: 16px;
+      font-weight: 600 !important;
+    }
+  }
+
+  .sort-icon.active {
+    color: #009bc8; /* Blue color for active sorting column */
+  }
+
+  .sort-icon.ascending {
+    transform: rotate(180deg); /* Rotate caret for ascending order */
+  }
+
+  .sort-icon.descending {
+    transform: rotate(0deg); /* Default for descending order */
+  }
+}

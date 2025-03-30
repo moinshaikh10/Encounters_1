@@ -1,0 +1,12 @@
+::ng-deep {
+  .problems-main-wrapper {
+    .table-wrapper {
+      table {
+        th:first-child,
+        td:first-child {
+          color: #009bc8;
+        }
+      }
+    }
+  }
+}
